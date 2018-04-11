@@ -165,7 +165,7 @@ fi
 source "${VIRTUALENV_ROOT}/bin/activate"
 cd "${TOP}"
 easy_install pip==9.0.1 # force version of pip
-pip install --upgrade virtualenv
+pip install --no-cache-dir --upgrade virtualenv
 
 # Add mycroft-core to the virtualenv path
 # (This is equivalent to typing 'add2virtualenv $TOP', except
@@ -186,7 +186,7 @@ fi
 # install requirements (except pocketsphinx)
 # removing the pip2 explicit usage here for consistency with the above use.
 
-if ! pip install -r requirements.txt; then
+if ! pip install --no-cache-dir -r requirements.txt; then
     echo "Warning: Failed to install all requirements. Continue? y/N"
     read -n1 continue
     if [[ "$continue" != "y" ]] ; then
